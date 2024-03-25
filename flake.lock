@@ -1,0 +1,85 @@
+{
+  "nodes": {
+    "crane": {
+      "inputs": {
+        "nixpkgs": [
+          "flakelight-rust",
+          "flakelight",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1707685877,
+        "narHash": "sha256-XoXRS+5whotelr1rHiZle5t5hDg9kpguS5yk8c8qzOc=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "2c653e4478476a52c6aa3ac0495e4dea7449ea0e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
+    "flakelight": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1707740958,
+        "narHash": "sha256-9WOADiS4hxSxrlFqBCohdhRBVzP7+RZtXYE77A55aZc=",
+        "owner": "nix-community",
+        "repo": "flakelight",
+        "rev": "40af04adb6f953f66198063defa654e98074a2bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "flakelight",
+        "type": "github"
+      }
+    },
+    "flakelight-rust": {
+      "inputs": {
+        "crane": "crane",
+        "flakelight": "flakelight"
+      },
+      "locked": {
+        "lastModified": 1707827390,
+        "narHash": "sha256-zNr8u3iyT2vNpL0R4A4FODsLTbZ0NCD+LAij6W53+g8=",
+        "owner": "accelbread",
+        "repo": "flakelight-rust",
+        "rev": "4785693a270ca6dd2b1c075d1dec0cff29a05440",
+        "type": "github"
+      },
+      "original": {
+        "owner": "accelbread",
+        "repo": "flakelight-rust",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1707546158,
+        "narHash": "sha256-nYYJTpzfPMDxI8mzhQsYjIUX+grorqjKEU9Np6Xwy/0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d934204a0f8d9198e1e4515dd6fec76a139c87f0",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flakelight-rust": "flakelight-rust"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
