@@ -9,6 +9,7 @@ struct Model {
     organization: String,
     name: String,
     branch: String,
+    path: String,
 }
 
 struct DownloadRequest {
@@ -41,7 +42,7 @@ fn parse_download_request() -> DownloadRequest {
                 .value_name("MODEL")
                 .value_parser(|v: &str| -> Result<Model, &str> {
                     let model_re = Regex::new(
-                        r"^(?P<organization>[^/\s]+)/(?P<model>[^:\s]+)(?::(?P<branch>\S+))?$",
+                        r"^(?P<organization>[^/\s/]+)/(?P<model>[^:\s/]+)(?::(?P<branch>[^\s/]+))?(?:/(?P<path>[^\s]+)?)?$",
                     )
                     .unwrap();
                     let captures = model_re.captures(&v).ok_or("Invalid model name format")?;
@@ -52,6 +53,11 @@ fn parse_download_request() -> DownloadRequest {
                             .name("branch")
                             .map(|m| m.as_str())
                             .unwrap_or("main")
+                            .to_string(),
+                        path: captures
+                            .name("path")
+                            .map(|m| m.as_str())
+                            .unwrap_or("")
                             .to_string(),
                     })
                 }),
@@ -88,8 +94,8 @@ fn parse_download_request() -> DownloadRequest {
     let destination = {
         let arg = matches.get_one::<String>("destination").unwrap();
         // Create download directory from model name in the destination path
-        // Format: <destination>/<organization>_<model>_<branch>
-        format!("{}/{}_{}_{}", arg, model.organization, model.name, model.branch)
+        // Format: <destination>/<organization>_<model>_<branch>/<path>
+        format!("{}/{}_{}_{}/{}", arg, model.organization, model.name, model.branch, model.path)
     };
 
     DownloadRequest {

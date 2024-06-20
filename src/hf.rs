@@ -18,7 +18,7 @@ enum ResourceKind {
 
 pub fn get_list_of_files_to_download(model: &Model) -> Vec<ToDownload> {
     let mut files = Vec::new();
-    let mut dirs_to_fetch = vec!["".to_string()];
+    let mut dirs_to_fetch = vec![model.path.clone()];
 
     while let Some(dir) = dirs_to_fetch.pop() {
         println!("Fetching file tree for /{dir}");
